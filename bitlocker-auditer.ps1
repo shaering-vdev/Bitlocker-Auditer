@@ -53,7 +53,7 @@ $VenOU = "OU=Windows Drive Encryption,OU=Computers,OU=Tysons,DC=Ventera,DC=com"
 # Grab all computers from that OU that have logged in sometime in the last year
 # To change this to show ALL computers in the CFE OU, change $VenPCs on line 57 to $VenPCs_All
 $VenPCs = Get-ADComputer -Filter 'LastLogonDate -ge $d' -SearchBase $VenOU -Properties * 
-$VenPCs_all = Get-ADComputer -Filter * -SearchBase $VenOU -Properties * 
+# $VenPCs_all = Get-ADComputer -Filter * -SearchBase $VenOU -Properties * 
 
 # Create an array of Powershell Objects, comprised of the Hostname, last login date, and encryption date
 $Results = ForEach ($Computer in $VenPCs)
@@ -88,7 +88,7 @@ $OutFile = $env:USERPROFILE+"\desktop\Bitlocker_Report.txt"
 $Results = $Results | sort Encryption_Date
 
 # Dump the results to a file
-$Results > $OutFile 
+$Results | Out-File $OutFile
 
 # Alert the user
 Write-Host The Bitlocker report has been saved to your desktop.
@@ -98,8 +98,3 @@ notepad.exe $OutFile
 
 # Leave console open to review any errors that may have occured
 pause
-
-
-
-
-
