@@ -51,7 +51,7 @@ $d = [DateTime]::Today.AddDays(-365);
 $VenOU = ""
 
 # Grab all computers from that OU that have logged in sometime in the last year
-# To change this to show ALL computers in the CFE OU, change $VenPCs on line 57 to $VenPCs_All
+# To change this to show ALL computers in the CFE OU, change $VenPCs on line 59 to $VenPCs_All
 $VenPCs = Get-ADComputer -Filter 'LastLogonDate -ge $d' -SearchBase $VenOU -Properties * 
 # $VenPCs_all = Get-ADComputer -Filter * -SearchBase $VenOU -Properties * 
 
