@@ -1,5 +1,8 @@
 # This script MUST be run as administrator in order to read the Bitlocker data from AD
-# Also obviously must be run on a computer that can reach a DC
+# This script also requires the RSAT AD module. 
+
+# Get RSAT from here:
+# https://www.microsoft.com/en-us/download/details.aspx?id=45520
 
 ####	Self Elevating Code	####
 
